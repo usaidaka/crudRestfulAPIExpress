@@ -47,7 +47,7 @@ const createProduct = async (
 
   productData = JSON.stringify(productData);
   const result = fs.writeFileSync(dirFile, productData);
-  return result;
+  return payload;
 };
 
 const removeProduct = async (id) => {
@@ -75,7 +75,6 @@ const reNewProduct = async (
   id
 ) => {
   let productData = await getProductList();
-  console.log(productData, "<<< PRODUCT DATA");
   let updatedData = productData.map((data) => {
     if (String(data.id) === String(id)) {
       const newData = {

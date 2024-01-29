@@ -103,7 +103,9 @@ const productById = async (req, res) => {
   try {
     const response = await productHelper.getProductById(id);
     if (!response) {
-      return res.status(500).json({ ok: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ ok: false, message: "Product not found", response: [] });
     }
     return res.json({
       ok: true,
@@ -143,7 +145,7 @@ const deleteProduct = async (req, res) => {
     const isProductExist = await productHelper.getProductById(id);
 
     if (!isProductExist) {
-      return res.status(500).json({ ok: false, message: "Product not found" });
+      return res.status(404).json({ ok: false, message: "Product not found" });
     }
 
     const response = await productHelper.removeProduct(id);
@@ -166,8 +168,15 @@ const updateProduct = async (req, res) => {
     validationHelper.productListUpdateValidation(productData);
 
     const response = await productHelper.reNewProduct(productData, id);
-    console.log(response);
-    res.json({ ok: true, message: "product updated", response });
+
+    res
+      .status(201)
+      .json({
+        ok: true,
+        message: "product updated",
+        id,
+        response: productData,
+      });
   } catch (error) {
     console.log([fileName, "update product", "ERROR", { info: `${error}` }]);
     return res.status(500).json(error);
