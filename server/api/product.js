@@ -74,6 +74,10 @@ const productList = async (req, res) => {
           product.title.startsWith(title) && product.brand.startsWith(brand)
         );
       });
+    } else if (title) {
+      response = response.filter((product) => {
+        return product.title.startsWith(title);
+      });
     } else if (rating) {
       response = response.filter((product) => {
         return String(product.rating).startsWith(rating[0]);
@@ -169,14 +173,12 @@ const updateProduct = async (req, res) => {
 
     const response = await productHelper.reNewProduct(productData, id);
 
-    res
-      .status(201)
-      .json({
-        ok: true,
-        message: "product updated",
-        id,
-        response: productData,
-      });
+    res.status(201).json({
+      ok: true,
+      message: "product updated",
+      id,
+      response: productData,
+    });
   } catch (error) {
     console.log([fileName, "update product", "ERROR", { info: `${error}` }]);
     return res.status(500).json(error);

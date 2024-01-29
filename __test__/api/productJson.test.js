@@ -58,7 +58,6 @@ describe("Product Json", () => {
         .get(`${apiUrl}/${query.id}`)
         .expect(200)
         .then((res) => {
-          console.log(Array(res.body?.response).length, "<<<>>>ARRAY");
           expect(!_.isEmpty(res.body?.response)).toBeTruthy();
           expect(Array(res.body?.response).length).toBe(1);
           const iPhone9 = _.find(
