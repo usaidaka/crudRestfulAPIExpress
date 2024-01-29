@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "41cf7537-a665-44cb-8bef-f50f0b60dae9",
+		"name": "PHINCON (CRUD express) 1-29-2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26453564"
+	},
+	"item": [
+		{
+			"name": "All Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/product-list/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product-list",
+						""
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "I",
+							"disabled": true
+						},
+						{
+							"key": "rating",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "90",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "I",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"title\": \"Mito\",\r\n    \"description\": \"An Mito mobile which is nothing like Mito\",\r\n    \"price\": 100,\r\n    \"discountPercentage\": 10.96,\r\n    \"rating\": 1.00,\r\n    \"stock\": 5,\r\n    \"brand\": \"Mito\",\r\n    \"category\": \"Qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/product-list/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product-list",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"title\": \"Xiaomi Redmi\",\r\n    \"description\": \"An sambung mobile which is nothing like samsung\",\r\n    \"price\": 700,\r\n    \"discountPercentage\": 83.96,\r\n    \"rating\": 5.00,\r\n    \"stock\": 10,\r\n    \"brand\": \"Samsung\",\r\n    \"category\": \"smartphones\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/product/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"product",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unregistered Route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
